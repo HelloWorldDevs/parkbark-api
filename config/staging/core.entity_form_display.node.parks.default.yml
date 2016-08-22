@@ -30,12 +30,9 @@ content:
     type: geolocation_latlng
   field_park_amenities:
     weight: 35
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_buttons
   field_park_details:
     weight: 33
     settings:

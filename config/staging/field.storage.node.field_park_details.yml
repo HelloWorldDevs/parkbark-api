@@ -1,0 +1,19 @@
+uuid: b9a09a86-c028-477e-8569-bef5a805e31f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_park_details
+field_name: field_park_details
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

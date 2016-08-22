@@ -1,0 +1,19 @@
+uuid: ccc3054b-1aca-4725-b639-082435d98f36
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.parks.field_park_image
+    - node.type.parks
+  module:
+    - user
+id: node.parks.teaser
+targetEntityType: node
+bundle: parks
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_park_image: true

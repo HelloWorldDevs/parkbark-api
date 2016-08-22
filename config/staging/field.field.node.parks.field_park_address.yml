@@ -1,0 +1,21 @@
+uuid: 3d7baca3-2b94-4a82-a9ae-f3681b8e3481
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_park_address
+    - node.type.parks
+  module:
+    - geolocation
+id: node.parks.field_park_address
+field_name: field_park_address
+entity_type: node
+bundle: parks
+label: 'Park Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

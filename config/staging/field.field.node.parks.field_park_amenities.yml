@@ -1,0 +1,28 @@
+uuid: 325c34d6-1402-4c2b-ad61-351ee778702a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_park_amenities
+    - node.type.parks
+    - taxonomy.vocabulary.amenities
+id: node.parks.field_park_amenities
+field_name: field_park_amenities
+entity_type: node
+bundle: parks
+label: 'Park Amenities'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      amenities: amenities
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

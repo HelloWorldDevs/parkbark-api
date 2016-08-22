@@ -1,0 +1,49 @@
+uuid: fd67ef1b-ed8b-4099-86e2-77ea3bbec826
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.parks.field_park_address
+    - field.field.node.parks.field_park_amenities
+    - field.field.node.parks.field_park_details
+    - field.field.node.parks.field_park_image
+    - node.type.parks
+  module:
+    - geolocation
+    - image
+    - user
+id: node.parks.default
+targetEntityType: node
+bundle: parks
+mode: default
+content:
+  field_park_address:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+  field_park_amenities:
+    weight: 105
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_park_details:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_park_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  links:
+    weight: 100
+hidden: {  }

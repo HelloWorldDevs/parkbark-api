@@ -1,0 +1,19 @@
+uuid: 96b5df7d-5208-493f-b7a3-b3a639ec969a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_park_details
+    - node.type.parks
+id: node.parks.field_park_details
+field_name: field_park_details
+entity_type: node
+bundle: parks
+label: 'Park Details'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

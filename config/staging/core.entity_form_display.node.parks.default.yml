@@ -1,0 +1,85 @@
+uuid: 19c82e8a-5af0-43a0-940e-ebaeeff49483
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.parks.field_park_address
+    - field.field.node.parks.field_park_amenities
+    - field.field.node.parks.field_park_details
+    - field.field.node.parks.field_park_image
+    - image.style.thumbnail
+    - node.type.parks
+  module:
+    - geolocation
+    - image
+    - path
+id: node.parks.default
+targetEntityType: node
+bundle: parks
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_park_address:
+    weight: 34
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+  field_park_amenities:
+    weight: 35
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_park_details:
+    weight: 33
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+  field_park_image:
+    weight: 32
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

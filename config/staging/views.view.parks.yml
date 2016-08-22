@@ -189,17 +189,18 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          default_action: default
+          default_action: ignore
           exception:
             value: all
             title_enable: false
             title: All
           title_enable: false
           title: ''
-          default_argument_type: raw
+          default_argument_type: query_parameter
           default_argument_options:
-            index: 1
-            use_alias: false
+            query_param: loc
+            fallback: '37.7749295,-122.41941550000001<=5miles'
+            multiple: and
           default_argument_skip_url: false
           summary_options:
             base_path: ''

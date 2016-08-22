@@ -1,0 +1,24 @@
+uuid: d2e0036a-1ab8-4898-8bc3-f98d845f0cbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_time
+    - node.type.survey_responses
+  module:
+    - datetime
+id: node.survey_responses.field_date_time
+field_name: field_date_time
+entity_type: node
+bundle: survey_responses
+label: 'Date & Time'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

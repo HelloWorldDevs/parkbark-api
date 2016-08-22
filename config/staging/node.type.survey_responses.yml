@@ -1,0 +1,18 @@
+uuid: b71f88cc-7515-43d4-8801-9f405b791920
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Survey Responses'
+type: survey_responses
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

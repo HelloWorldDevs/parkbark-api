@@ -1,0 +1,19 @@
+uuid: a27547f4-1a3c-4196-9dde-50f9509060b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_device_id
+    - node.type.survey_responses
+id: node.survey_responses.field_device_id
+field_name: field_device_id
+entity_type: node
+bundle: survey_responses
+label: 'Device ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,58 @@
+uuid: e2ff4c14-9462-43c1-a6dc-90aae8a0ff5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.survey_responses.field_date_time
+    - field.field.node.survey_responses.field_device_id
+    - field.field.node.survey_responses.field_notes
+    - field.field.node.survey_responses.field_number_of_dogs
+    - field.field.node.survey_responses.field_park_amenities
+    - node.type.survey_responses
+  module:
+    - datetime
+    - user
+id: node.survey_responses.default
+targetEntityType: node
+bundle: survey_responses
+mode: default
+content:
+  field_date_time:
+    weight: 101
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+  field_device_id:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_notes:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  field_number_of_dogs:
+    weight: 102
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  field_park_amenities:
+    weight: 105
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  links:
+    weight: 100
+hidden: {  }

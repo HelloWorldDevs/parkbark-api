@@ -16,4 +16,7 @@ content:
   links:
     weight: 100
 hidden:
+  field_park_address: true
+  field_park_amenities: true
+  field_park_details: true
   field_park_image: true

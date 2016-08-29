@@ -14,4 +14,9 @@ mode: teaser
 content:
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_date_time: true
+  field_device_id: true
+  field_notes: true
+  field_number_of_dogs: true
+  field_park_amenities: true

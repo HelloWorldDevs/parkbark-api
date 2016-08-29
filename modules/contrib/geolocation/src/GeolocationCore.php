@@ -61,6 +61,8 @@ class GeolocationCore {
     // Get the default data from the views module.
     $data = views_field_default_views_data($field_storage);
 
+    $args = ['@field_name' => $field_storage->getName()];
+
     // Loop through all of the results and set our overrides.
     foreach ($data as $table_name => $table_data) {
       foreach ($table_data as $field_name => $field_data) {
@@ -72,7 +74,15 @@ class GeolocationCore {
             $data[$table_name][$field_name]['field']['click sortable'] = FALSE;
           }
           if (isset($field_data['filter'])) {
-            // The default filters aren't useful at all so remove them.
+            if (substr($field_name, -4, 4) == '_lat') {
+              $data[$table_name][$field_name]['title'] = $this->t('Latitude (@field_name)', $args);
+              continue;
+            }
+            if (substr($field_name, -4, 4) == '_lng') {
+              $data[$table_name][$field_name]['title'] = $this->t('Longitude (@field_name)', $args);
+              continue;
+            }
+            // The default filters are mostly not useful except lat/lng.
             unset($data[$table_name][$field_name]['filter']);
           }
           if (isset($field_data['argument'])) {
@@ -85,8 +95,6 @@ class GeolocationCore {
           }
         }
       }
-
-      $args = ['@field_name' => $field_storage->getName()];
 
       $field_coordinates_table_data = [];
       $entity_type_id = $field_storage->getTargetEntityTypeId();
@@ -145,6 +153,7 @@ class GeolocationCore {
           'field_name' => $args['@field_name'] . '_proximity',
           'entity_type' => $entity_type_id,
           'real field' => $args['@field_name'],
+          'float' => TRUE,
           'additional fields' => [
             $args['@field_name'] . '_lat',
             $args['@field_name'] . '_lng',
@@ -259,12 +268,86 @@ class GeolocationCore {
     $field_lat = "{$table_name}.{$field_id}_lat";
     $field_lng = "{$table_name}.{$field_id}_lng";
 
-    return "(
-      $field_lat < $filter_lat_north_east
-      AND $field_lat > $filter_lat_south_west
-      AND $field_lng < $filter_lng_north_east
-      AND $field_lng > $filter_lng_south_west
-    )";
+    /*
+     * GoogleMaps shows a map, not a globe. Therefore it will never flip over
+     * the poles, but it will move across -180°/+180° longitude.
+     * So latitude will always have north larger than south, but east not
+     * necessarily larger than west.
+     */
+    return "($field_lat BETWEEN $filter_lat_south_west AND $filter_lat_north_east) 
+      AND
+      (
+        ($filter_lng_south_west < $filter_lng_north_east AND $field_lng BETWEEN $filter_lng_south_west AND $filter_lng_north_east) 
+        OR
+        (
+          $filter_lng_south_west > $filter_lng_north_east AND (
+            $field_lng BETWEEN $filter_lng_south_west AND 180 OR $field_lng BETWEEN -180 AND $filter_lng_north_east
+          )
+        )
+      )
+    ";
+  }
+
+  /**
+   * Transform sexagesimal notation to float.
+   *
+   * Sexagesimal means a string like - X° Y' Z"
+   *
+   * @param string $sexagesimal
+   *  String in DMS notation.
+   *
+   * @return float|FALSE
+   *  The regular float notation or FALSE if not sexagesimal.
+   */
+  public static function SexagesimalToDecimal($sexagesimal = '') {
+    $pattern = "/(?<degree>-?\d{1,3})°[ ]?((?<minutes>\d{1,2})')?[ ]?((?<seconds>(\d{1,2}|\d{1,2}\.\d+))\")?/";
+    preg_match($pattern, $sexagesimal, $gps_matches);
+    if (
+      !empty($gps_matches)
+    ) {
+      $value = $gps_matches['degree'];
+      if (!empty($gps_matches['minutes'])) {
+        $value += $gps_matches['minutes'] / 60;
+      }
+      if (!empty($gps_matches['seconds'])) {
+        $value += $gps_matches['seconds'] / 3600;
+      }
+    }
+    else {
+      return FALSE;
+    }
+    return $value;
+  }
+
+  /**
+   * Transform decimal notation to sexagesimal.
+   *
+   * Sexagesimal means a string like - X° Y' Z"
+   *
+   * @param float|string $decimal
+   *  Either float or float-castable location.
+   *
+   * @return string|FALSE
+   *  The sexagesimal notation or FALSE on error.
+   */
+  public static function DecimalToSexagesimal($decimal = '') {
+    $decimal = (float) $decimal;
+
+    $degrees = floor($decimal);
+    $rest = $decimal - $degrees;
+    $minutes = floor($rest * 60);
+    $rest = $rest * 60 - $minutes;
+    $seconds = round($rest * 60, 4);
+
+    $value = $degrees . '°';
+    if (!empty($minutes)) {
+      $value .= ' ' . $minutes . '\'';
+    }
+    if (!empty($seconds)) {
+      $value .= ' ' . $seconds . '"';
+    }
+
+    return $value;
   }
 
 }

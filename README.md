@@ -3,11 +3,15 @@
 ##### Basic use:
 - Base endpoint is `/parks`
 
+##### Sorting by proximity
+- Default sorting is `ASC`
+- Example: `parks?sort_order=DESC`
+
 ##### To filter by proximity:
 - `/parks?loc=LAT,LNG<=Xmiles`
 - Latitude and longitude in decimal format, no spaces
 - Distance filter can be in miles or kilometers
-- Fallback location filter is _45.5189220,-122.6793480<=5miles_ (Pioneer Courthouse Square)
+- Fallback location filter is _45.5189220,-122.6793480<=50miles_ (Pioneer Courthouse Square)
 - Example: `/parks?loc=45.5189220,-122.6793480<=5miles`
 
 ##### To filter by amenities:

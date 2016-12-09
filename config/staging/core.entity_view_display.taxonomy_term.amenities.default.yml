@@ -1,0 +1,48 @@
+uuid: f47dbc0e-03de-4201-a424-ada6f5dca317
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.amenities.field_off_state_graphic
+    - field.field.taxonomy_term.amenities.field_on_state_graphic
+    - field.field.taxonomy_term.amenities.field_priority
+    - taxonomy.vocabulary.amenities
+  module:
+    - image
+    - text
+id: taxonomy_term.amenities.default
+targetEntityType: taxonomy_term
+bundle: amenities
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_off_state_graphic:
+    weight: 2
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_on_state_graphic:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_priority:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+hidden: {  }

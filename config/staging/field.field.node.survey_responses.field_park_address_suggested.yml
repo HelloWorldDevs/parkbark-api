@@ -1,0 +1,19 @@
+uuid: d6e97fa2-c15d-4ac2-b562-94a144846319
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_park_address_suggested
+    - node.type.survey_responses
+id: node.survey_responses.field_park_address_suggested
+field_name: field_park_address_suggested
+entity_type: node
+bundle: survey_responses
+label: 'Park Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

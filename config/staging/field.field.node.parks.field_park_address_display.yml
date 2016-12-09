@@ -1,0 +1,19 @@
+uuid: 66e8fc96-06ee-415e-9fcb-6c63f1f07bbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_park_address_display
+    - node.type.parks
+id: node.parks.field_park_address_display
+field_name: field_park_address_display
+entity_type: node
+bundle: parks
+label: 'Park Address Display'
+description: 'Address as displayed in listings'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

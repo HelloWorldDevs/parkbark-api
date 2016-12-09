@@ -1,0 +1,18 @@
+uuid: 2c7b46ce-ec8f-4b72-9cdc-1bf275085d68
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.survey_responses
+id: node.survey_responses.title
+field_name: title
+entity_type: node
+bundle: survey_responses
+label: 'Park Name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

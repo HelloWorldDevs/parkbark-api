@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.parks.field_park_address
+    - field.field.node.parks.field_park_address_display
     - field.field.node.parks.field_park_amenities
     - field.field.node.parks.field_park_details
     - field.field.node.parks.field_park_image
@@ -23,6 +24,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: geolocation_latlng
+  field_park_address_display:
+    weight: 106
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_park_amenities:
     weight: 105
     label: above

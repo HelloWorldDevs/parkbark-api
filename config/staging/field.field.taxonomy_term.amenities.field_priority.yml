@@ -1,0 +1,23 @@
+uuid: bb1846d4-4d6c-4046-9403-b0a12e7ed042
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_priority
+    - taxonomy.vocabulary.amenities
+id: taxonomy_term.amenities.field_priority
+field_name: field_priority
+entity_type: taxonomy_term
+bundle: amenities
+label: Priority
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

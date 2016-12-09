@@ -1,0 +1,14 @@
+uuid: 65a6f19e-9364-4610-a94b-ff39162f421b
+langcode: en
+status: true
+dependencies: {  }
+id: app
+label: App
+weight: -9
+is_admin: null
+permissions:
+  - 'create survey_responses content'
+  - 'edit own survey_responses content'
+  - 'restful get entity:node'
+  - 'restful patch entity:node'
+  - 'restful post entity:node'

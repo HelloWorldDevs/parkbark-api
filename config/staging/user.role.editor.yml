@@ -1,0 +1,41 @@
+uuid: 8ef53e06-fda3-4ec7-a912-1e1f6bbbef99
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: -7
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'create parks content'
+  - 'delete any parks content'
+  - 'delete own parks content'
+  - 'edit any parks content'
+  - 'create survey_responses content'
+  - 'delete any survey_responses content'
+  - 'delete own survey_responses content'
+  - 'edit any survey_responses content'
+  - 'edit own survey_responses content'
+  - 'access in-place editing'
+  - 'administer shortcuts'
+  - 'delete terms in amenities'
+  - 'edit terms in amenities'
+  - 'administer account settings'
+  - 'administer users'
+  - 'change own username'
+  - 'access user profiles'
+  - 'switch shortcut sets'
+  - 'access administration pages'
+  - 'view the administration theme'
+  - 'administer nodes'
+  - 'delete all revisions'
+  - 'revert all revisions'
+  - 'view all revisions'
+  - 'delete parks revisions'
+  - 'edit own parks content'
+  - 'revert parks revisions'
+  - 'view parks revisions'
+  - 'delete survey_responses revisions'
+  - 'revert survey_responses revisions'
+  - 'view survey_responses revisions'

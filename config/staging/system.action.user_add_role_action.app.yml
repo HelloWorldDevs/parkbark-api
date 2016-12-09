@@ -1,0 +1,14 @@
+uuid: 7100d991-c880-4df0-956f-4169e0619658
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.app
+  module:
+    - user
+id: user_add_role_action.app
+label: 'Add the App role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: app

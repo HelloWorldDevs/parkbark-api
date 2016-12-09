@@ -67,6 +67,12 @@ class ComposerStaticInitDrupal8
         array (
             'Masterminds\\' => 12,
         ),
+        'L' => 
+        array (
+            'League\\OAuth2\\Server\\' => 21,
+            'League\\Event\\' => 13,
+            'Lcobucci\\JWT\\' => 13,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -221,6 +227,18 @@ class ComposerStaticInitDrupal8
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'League\\OAuth2\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth2-server/src',
+        ),
+        'League\\Event\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/event/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

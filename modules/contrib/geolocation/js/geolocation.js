@@ -7,6 +7,28 @@
  * @param {Object} drupalSettings
  * @param {Object} drupalSettings.geolocation
  * @param {String} drupalSettings.geolocation.google_map_api_key
+ * @param {String} drupalSettings.geolocation.google_map_additional_parameters
+ */
+
+/**
+ * @name GoogleMapSettings
+ * @property {String} info_auto_display
+ * @property {String} height
+ * @property {String} width
+ * @property {String} zoom
+ * @property {String} type
+ */
+
+/**
+ * @name GoogleMapBounds
+ * @property {Function} getNorthEast
+ * @property {Function} getSouthWest
+ */
+
+/**
+ * @name GoogleMapLatLng
+ * @property {Function} lat
+ * @property {Function} lng
  */
 
 /**
@@ -30,6 +52,7 @@
  * @property {String} GeocoderStatus.OK
  *
  * @property {Function} LatLng
+ * @property {Function} LatLngBounds
  *
  * @function
  * @property Map
@@ -41,12 +64,20 @@
  * @property {function(Object):Object} Marker
  * @property {Function} Marker.setPosition
  * @property {Function} Marker.setMap
+ * @property {Function} Marker.setIcon
  *
  * @function
  * @property {function():Object} Geocoder
  * @property {Function} Geocoder.geocode
  *
  * @property {Function} fitBounds
+ *
+ * @property {Function} setCenter
+ * @property {Function} setZoom
+ * @property {Function} getZoom
+ *
+ * @property {function():GoogleMapBounds} getBounds
+ * @property {function():GoogleMapLatLng} getCenter
  */
 
 /**
@@ -149,9 +180,14 @@
       // Default script path.
       var scriptPath = '//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=Drupal.geolocation.googleCallback';
 
-      // If a Google API key isset, use it.
+      // If a Google API key is set, use it.
       if (typeof drupalSettings.geolocation.google_map_api_key !== 'undefined') {
         scriptPath += '&key=' + drupalSettings.geolocation.google_map_api_key;
+      }
+
+      // If additional Google API parameters are set, use them.
+      if (typeof drupalSettings.geolocation.google_map_additional_parameters !== 'undefined') {
+        scriptPath += '&' + drupalSettings.geolocation.google_map_additional_parameters;
       }
 
       $.getScript(scriptPath)
@@ -174,9 +210,6 @@
    * @return {object} - The google map object.
    */
   Drupal.geolocation.addMap = function (map) {
-    // Add any missing settings.
-    map.settings = $.extend(Drupal.geolocation.defaultSettings(), map.settings);
-
     // Set the container size.
     map.container.css({
       height: map.settings.google_map_settings.height,
@@ -199,11 +232,6 @@
       draggable: map.settings.google_map_settings.draggable,
       styles: map.settings.google_map_settings.style
     });
-
-    // Set the map marker.
-    if (map.lat !== '' && map.lng !== '') {
-      Drupal.geolocation.setMapMarker(center, map);
-    }
 
     if (!Drupal.geolocation.hasOwnProperty('maps')) {
       Drupal.geolocation.maps = [];
@@ -246,7 +274,7 @@
         map.marker.addListener('click', function () {
           map.infowindow.open(map.googleMap, map.marker);
         });
-        if (map.settings.info_auto_display) {
+        if (map.settings.google_map_settings.info_auto_display) {
           map.infowindow.open(map.googleMap, map.marker);
         }
       }

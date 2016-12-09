@@ -1,10 +1,6 @@
 CHANGELOG
 =========
 
-* 1.0.4 (2016-06-02)
-
-  * Add compability with Symfony 3.
-
 * 1.0.3 (2014-11-23)
 
   * Only call Terminable middlewares once.

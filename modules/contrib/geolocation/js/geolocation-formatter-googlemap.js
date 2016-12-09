@@ -58,13 +58,7 @@
 
       if (map.container.length && !map.container.hasClass('geolocation-processed')) {
         // Add the map by ID with settings.
-        map.googleMap = Drupal.geolocation.addMap(map);
-
-        // Set the map marker.
-        if (map.lat !== '' && map.lng !== '') {
-          Drupal.geolocation.setMapMarker(map.googleMap.getCenter(), map);
-        }
-
+        Drupal.geolocation.addMap(map);
         // Set the already processed flag.
         map.container.addClass('geolocation-processed');
       }

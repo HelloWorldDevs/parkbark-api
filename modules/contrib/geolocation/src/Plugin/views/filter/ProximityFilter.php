@@ -156,15 +156,6 @@ class ProximityFilter extends NumericFilter {
    * {@inheritdoc}
    */
   public function query() {
-
-    if (
-      !is_numeric($this->value['lat'])
-      || !is_numeric($this->value['lng'])
-      || !is_numeric($this->value['value'])
-    ) {
-      return;
-    }
-
     // Get the field alias.
     $lat = $this->value['lat'];
     $lng = $this->value['lng'];
